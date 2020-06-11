@@ -11,4 +11,4 @@ spec:
     targetPort: 8080
   - name: metrics
     port: 9090
-  type: ClusterIP
+  type: {{ default "NodePort" .Values.deck.service.type }}

@@ -3,7 +3,8 @@ podNamespace: prow-test-pods
 prowbucketname: ouzidev-testinfra-252513-prow-artefacts
 
 secrets:
-  #slackToken: slack-token
+  # slackToken: slack-token
+  # bucketGcsCredentials: prow-bucket-gcs-credentials
   githubToken: github-token
   oauthConfig: oauth-config
   bucketGcsCredentials: prow-bucket-gcs-credentials
@@ -16,7 +17,10 @@ github:
 hook:
   image: gcr.io/k8s-prow/hook:v20200610-6c96a0a6ed
   replicas: 1
+  service:
+    type: NodePort
   ingress:
+    enabled: true
     host: prow.test-infra.ouzi.io
     annotations: 
       cert-manager.io/cluster-issuer: letsencrypt-prod

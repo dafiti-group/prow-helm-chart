@@ -1,3 +1,5 @@
+# Deck ingress enabled: {{ .Values.deck.ingress.enabled }}
+{{- if .Values.deck.ingress.enabled }}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -19,3 +21,4 @@ spec:
   - hosts:
     - {{ quote .Values.deck.ingress.host }}
     secretName: {{ quote .Values.deck.ingress.host }}
+{{- end }}

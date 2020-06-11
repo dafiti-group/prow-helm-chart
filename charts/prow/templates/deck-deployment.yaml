@@ -45,7 +45,9 @@ spec:
         - --github-oauth-config-file=/etc/githuboauth/secret
         - --cookie-secret=/etc/cookie/secret
         - --plugin-config=/etc/plugins/plugins.yaml
+{{ if .Values.secrets.bucketGcsCredentials }}
         - --gcs-credentials-file=/etc/gcscredentials/service-account.json
+{{ end }}
         ports:
           - name: http
             containerPort: 8080
@@ -64,9 +66,11 @@ spec:
         - name: oauth-token
           mountPath: /etc/github
           readOnly: true
+{{ if .Values.secrets.bucketGcsCredentials }}
         - name: gcs-credentials
           mountPath: /etc/gcscredentials
           readOnly: true
+{{ end }}
         - name: cookie-secret
           mountPath: /etc/cookie
           readOnly: true
@@ -99,9 +103,11 @@ spec:
       - name: oauth-token
         secret:
             secretName: {{ .Values.secrets.githubToken }}
+{{ if .Values.secrets.bucketGcsCredentials }}
       - name: gcs-credentials
         secret:
             secretName: {{ .Values.secrets.bucketGcsCredentials }}
+{{ end }}
       - name: cookie-secret
         secret:
             secretName: deck-cookie
