@@ -3,6 +3,16 @@ entries:
   prow:
   - apiVersion: v1
     appVersion: v20200203-cae3cccf8
+    created: "2020-06-12T04:55:55.200171551Z"
+    description: A Helm chart for Prow
+    digest: 7ee14c186e65f4fe535fbd91f36beecd07533ced86575420982147a9575540c8
+    name: prow
+    type: application
+    urls:
+    - https://github.com/dafiti-group/prow-helm-chart/releases/download/prow-0.9.6/prow-0.9.6.tgz
+    version: 0.9.6
+  - apiVersion: v1
+    appVersion: v20200203-cae3cccf8
     created: "2020-06-12T03:45:46.728723611Z"
     description: A Helm chart for Prow
     digest: fe6ddad6bddd2d47f441b0c29dfe1c1b8ea82b82b3b54965db0be88329193578
