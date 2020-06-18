@@ -9,6 +9,9 @@ secrets:
   oauthConfig: oauth-config
   bucketGcsCredentials: prow-bucket-gcs-credentials
 
+config: |-
+plugins: |-
+
 github:
   org: ouzi-dev
   bot:
