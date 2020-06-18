@@ -12,4 +12,4 @@ data:
   config.yaml: |-
     prowjob_namespace: {{ .Release.Namespace }}
     pod_namespace: {{ .Values.podNamespace }}
-    {{ .Values.config }}
+{{ indent 4 .Values.config }}

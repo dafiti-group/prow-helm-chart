@@ -13,7 +13,40 @@ hmacToken:
   generate: true
 
 config: |-
+    periodics:
+    - interval: 10m
+      name: echo-test
+      decorate: true
+      spec:
+        containers:
+        - image: alpine
+          command: ["/bin/date"]
+    postsubmits:
+      dafiti-group/charts:
+      - name: test-postsubmit
+        decorate: true
+        spec:
+          containers:
+          - image: alpine
+            command: ["/bin/printenv"]
+    presubmits:
+      dafiti-group/charts:
+      - name: test-presubmit
+        decorate: true
+        always_run: true
+        skip_report: false
+        spec:
+          containers:
+          - image: alpine
+            command: ["/bin/printenv"]
+
 plugins: |-
+    plugins:
+      dafiti-group:
+        - trigger
+        - wip
+        - cat
+        - dog
 
 github:
   org: ouzi-dev

@@ -10,4 +10,4 @@ metadata:
     "helm.sh/hook-delete-policy": "before-hook-creation"
 data:
   plugins.yaml: |-
-    {{ .Values.plugins }}
+{{ indent 4 .Values.plugins }}
