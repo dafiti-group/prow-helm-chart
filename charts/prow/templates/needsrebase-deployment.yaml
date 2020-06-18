@@ -44,7 +44,7 @@ spec:
       volumes:
       - name: hmac
         secret:
-          secretName: hmac-token
+          secretName: {{ .Values.secrets.hmacToken }}
       - name: oauth
         secret:
           secretName: {{ .Values.secrets.githubToken }}

@@ -7,7 +7,10 @@ secrets:
   # bucketGcsCredentials: prow-bucket-gcs-credentials
   githubToken: github-token
   oauthConfig: oauth-config
-  bucketGcsCredentials: prow-bucket-gcs-credentials
+  hmacToken: hmac-token
+
+hmacToken:
+  generate: true
 
 config: |-
 plugins: |-
@@ -25,10 +28,10 @@ hook:
   ingress:
     enabled: true
     host: prow.test-infra.ouzi.io
-    annotations: 
+    annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       ingress.kubernetes.io/ssl-redirect: "true"
-      kubernetes.io/ingress.class: nginx  
+      kubernetes.io/ingress.class: nginx
   tolerations:
     - key: cloud.google.com/gke-preemptible
       operator: Equal
@@ -55,7 +58,10 @@ sinker:
 deck:
   image: gcr.io/k8s-prow/deck:v20200610-6c96a0a6ed
   replicas: 1
+  service:
+    type: NodePort
   ingress:
+    enabled: true
     host: prow.test-infra.ouzi.io
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -129,7 +135,7 @@ labelsync:
       value: "true"
       effect: NoSchedule
 
-# requires tekton to work - 
+# requires tekton to work -
 # we will install it part of the chart in a later revision
 pipeline:
   # image: gcr.io/k8s-prow/pipeline:v20200610-6c96a0a6ed

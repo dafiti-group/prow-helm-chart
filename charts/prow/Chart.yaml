@@ -14,7 +14,7 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.11.3
+version: 0.11.4
 
 # Uses the Prow version
 appVersion: v20200610-6c96a0a6ed
