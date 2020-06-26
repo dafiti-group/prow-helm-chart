@@ -30,9 +30,13 @@ spec:
         - containerPort: 8888
         - containerPort: 9090
         volumeMounts:
+{{- if .Values.ghproxy.cache.persistent }}
         - name: cache
           mountPath: /cache
+{{- end }}
       volumes:
+{{- if .Values.ghproxy.cache.persistent }}
       - name: cache
         persistentVolumeClaim:
           claimName: ghproxy
+{{- end }}
